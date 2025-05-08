@@ -1,68 +1,121 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>SCANDAL</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
   <style>
     html, body {
       margin: 0;
       padding: 0;
-      background-color: black;
-      overflow: hidden;
-      height: 100%;
+      background: black;
       color: #ffe6e6;
       font-family: 'Cinzel Decorative', serif;
-      text-align: center;
+      overflow-x: hidden;
     }
 
-    .content {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: start;
-      min-height: 100vh;
-      padding-top: 60px;
+    body {
+      animation: fadeIn 1.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(-20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     h1 {
-      font-size: 3.5em;
-      margin: 0;
-      letter-spacing: 0.1em;
-      text-shadow: 2px 2px 6px #ff0033;
+      font-size: 4em;
+      margin-top: 80px;
+      text-align: center;
+      text-shadow: 0 0 10px red;
+      animation: rise 2s ease-out;
+    }
+
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(50px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .subtitle {
+      text-align: center;
       font-size: 1.5em;
-      margin-top: 10px;
       color: #ffcccc;
-      text-shadow: 1px 1px 3px #ff0033;
+      margin-bottom: 30px;
+      text-shadow: 0 0 6px #ff0033;
     }
 
     .video-wrapper {
-      margin-top: 40px;
       width: 90%;
       max-width: 720px;
       aspect-ratio: 16 / 9;
-      box-shadow: 0 0 30px #8b0000;
+      margin: 0 auto 50px;
+      box-shadow: 0 0 25px #8b0000;
       border: 2px solid #660000;
     }
 
-    .video-wrapper iframe {
+    iframe {
       width: 100%;
       height: 100%;
-      border: none;
     }
 
     canvas {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 1;
+      z-index: 0;
       pointer-events: none;
+    }
+
+    .section {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .framed-image {
+      border: 2px dashed red;
+      padding: 10px;
+      display: inline-block;
+      box-shadow: 0 0 20px red;
+    }
+
+    .framed-image img {
+      width: 300px;
+      display: block;
+    }
+
+    .inst {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: #ff6666;
+      text-shadow: 0 0 5px red;
+    }
+
+    .lyrics {
+      max-width: 800px;
+      margin: 60px auto;
+      white-space: pre-wrap;
+      text-align: left;
+      font-size: 1em;
+      line-height: 1.7em;
+      padding: 0 20px;
+      color: #dddddd;
+      text-shadow: 0 0 3px #660000;
+    }
+
+    .dox-image {
+      display: block;
+      margin: 50px auto 10px;
+      width: 300px;
+      box-shadow: 0 0 15px #ff0033;
+    }
+
+    .dox-caption {
+      text-align: center;
+      font-size: 0.8em;
+      color: red;
+      text-shadow: 0 0 5px red;
+      margin-bottom: 80px;
     }
 
     #corner300 {
@@ -101,21 +154,44 @@
 
   <div id="corner300" onclick="dropHearts()">300</div>
 
-  <div class="content">
-    <h1>SCANDAL</h1>
-    <div class="subtitle">私の名前はスキャンダルです</div>
+  <h1>SCANDAL</h1>
+  <div class="subtitle">私の名前はスキャンダルです</div>
 
-    <div class="video-wrapper">
-      <iframe 
-        src="https://www.youtube.com/embed/kd3pc2aLh2M?autoplay=1&mute=1&controls=1"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen>
-      </iframe>
-    </div>
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/kd3pc2aLh2M?autoplay=1&mute=1&controls=1"
+      allowfullscreen></iframe>
   </div>
 
+  <div class="section">
+    <div class="framed-image">
+      <img src="https://i.pinimg.com/736x/b8/ed/56/b8ed56d4f717a6941277c8a6c7b06440.jpg" alt="emo image" />
+    </div>
+    <div class="inst">inst - @scandal3o3</div>
+  </div>
+
+  <div class="lyrics">
+    I used to think I love you, now I know it ain't true<br>
+    Now I know it's not you, 50 on my boxers<br>
+    Bitch, I know you see me, shinin' in my white tee, it's easy<br>
+    I'll make it look easy, believe me, we gucci (free Gucci)<br>
+    Young punk bitch fuckin' on a young bitch (yah, yah)<br>
+    Fell in love when she saw me in the club, bitch<br>
+    Young punk bitch fuckin' on a drunk bitch (yah, yah)<br>
+    Shawty fell in love, now she doin' all my drugs, Yung Bruh<br>
+    Standin' in the club, like, lil' mama in my eyesight (yeah, my eyesight)<br>
+    She goin' home with me tonight, we connect like WiFi (wiFi)<br>
+    Yayo on the table, Gucci on my waist, too (yayo)<br>
+    Got my switch-blade, tonight you'll be safe<br>
+    Gemstone switch-blade and I will pull it out (gemstones)<br>
+    This club goin' up, baby, will you hold me down? (Will you hold me down?)<br>
+    Hella ice on my wrists, he thought my wrists sprained<br>
+    I'm in your driveway, baby, let's skrrt away (skrr, skrr, skrr)
+  </div>
+
+  <img class="dox-image" src="https://i.pinimg.com/736x/bb/e5/8a/bbe58a0e778739fe99a51b57fac26763.jpg" alt="doxed image" />
+  <div class="dox-caption">U'VE BEEN DOXED</div>
+
   <script>
-    // Лепестки роз
     const canvas = document.getElementById('petals');
     const ctx = canvas.getContext('2d');
     let petals = [];
@@ -178,7 +254,6 @@
       animate();
     };
 
-    // Сердечки <3 при клике на "300"
     function dropHearts() {
       for (let i = 0; i < 10; i++) {
         const heart = document.createElement('div');
