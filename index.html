@@ -4,145 +4,158 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SCANDAL</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative&family=VT323&display=swap" rel="stylesheet">
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&family=VT323&display=swap');
+
     body {
       margin: 0;
-      background: black;
-      color: #ff4d4d;
-      font-family: 'Cinzel Decorative', serif;
+      padding: 0;
+      background-color: black;
+      color: #ff4f81;
+      font-family: 'UnifrakturCook', cursive;
       overflow-x: hidden;
-      transition: filter 0.5s ease;
     }
 
-    .grayscale {
-      filter: grayscale(1);
-    }
-
-    #daltonic, #heart-btn {
-      position: fixed;
-      top: 10px;
-      font-family: 'VT323', monospace;
-      font-size: 1em;
-      color: #aaa;
-      cursor: pointer;
-      opacity: 0.5;
-      z-index: 100;
-    }
-
-    #daltonic:hover, #heart-btn:hover {
-      opacity: 1;
-      text-shadow: 0 0 3px #fff;
-    }
-
-    #daltonic {
-      left: 15px;
-    }
-
-    #heart-btn {
-      right: 15px;
-    }
-
-    h1 {
+    .title {
       text-align: center;
-      font-size: 4em;
-      margin-top: 80px;
-      text-shadow: 0 0 15px red;
+      font-size: 4rem;
+      margin-top: 60px;
+      text-shadow: 0 0 20px red;
     }
 
     .subtitle {
       text-align: center;
-      font-size: 1.5em;
-      margin-bottom: 30px;
-      text-shadow: 0 0 10px red;
+      font-size: 1.5rem;
+      margin-top: -10px;
+      font-family: 'VT323', monospace;
     }
 
     .video-container {
       display: flex;
       justify-content: center;
-      margin: 30px 0;
+      margin-top: 40px;
     }
 
     iframe {
-      width: 80%;
+      width: 90%;
       max-width: 800px;
       height: 450px;
-      border: none;
-      box-shadow: 0 0 25px red;
-    }
-
-    .image-block {
-      display: flex;
-      justify-content: center;
-      margin: 100px 0 20px 0;
-    }
-
-    .image-block img {
-      max-width: 300px;
-      width: 100%;
-      border: 2px dashed #ff4d4d;
-      padding: 4px;
+      border: 5px solid red;
       box-shadow: 0 0 20px red;
     }
 
-    .caption {
+    .petal {
+      position: fixed;
+      top: 0;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      opacity: 0.7;
+      transition: opacity 2s ease-out;
+      z-index: 2;
+    }
+
+    .top-right, .top-left {
+      position: fixed;
+      z-index: 3;
+      font-family: 'VT323', monospace;
+      font-size: 1.2rem;
+      color: #ff4f81;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .top-right {
+      top: 10px;
+      right: 10px;
+    }
+
+    .top-left {
+      top: 10px;
+      left: 10px;
+    }
+
+    .image-section {
       text-align: center;
-      font-size: 0.9em;
-      margin-bottom: 50px;
+      margin-top: 100px;
+    }
+
+    .bordered-img {
+      max-width: 400px;
+      border: 2px dashed red;
+      padding: 10px;
+      box-shadow: 0 0 15px red;
+    }
+
+    .inst-text {
+      color: #ff4f81;
+      font-size: 0.9rem;
+      text-align: center;
+      margin-top: 5px;
       text-shadow: 0 0 5px red;
     }
 
     .lyrics {
-      text-align: center;
       font-family: 'VT323', monospace;
-      color: rgba(255, 77, 77, 0.7);
-      font-size: 1.3em;
-      line-height: 1.8em;
-      margin: 40px 10px;
+      font-size: 1.2rem;
+      color: rgba(255, 0, 0, 0.5);
+      text-align: center;
       white-space: pre-wrap;
+      margin: 40px 10px;
     }
 
-    canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      z-index: 1;
+    .dox-image {
+      display: block;
+      margin: 30px auto 10px auto;
+      max-width: 400px;
+      border: 2px dashed red;
+      box-shadow: 0 0 15px red;
+    }
+
+    .dox-text {
+      text-align: center;
+      color: red;
+      font-size: 1rem;
+      text-shadow: 0 0 8px red;
     }
 
     .heart {
       position: absolute;
-      font-size: 20px;
       color: red;
-      opacity: 0.8;
-      animation: fall 2s ease-out forwards;
-      z-index: 99;
+      font-size: 24px;
+      user-select: none;
+      animation: fall 2s linear forwards;
+      z-index: 9999;
     }
 
     @keyframes fall {
       to {
-        transform: translateY(100px);
+        transform: translateY(300px);
         opacity: 0;
       }
+    }
+
+    .daltonic body {
+      filter: grayscale(1);
     }
   </style>
 </head>
 <body>
-  <div id="daltonic" onclick="toggleGrayscale()">daltonic mode</div>
-  <div id="heart-btn" onclick="dropHeart()">300</div>
-  <canvas id="canvas"></canvas>
+  <button class="top-left" id="daltonicBtn">daltonic mode</button>
+  <button class="top-right" id="heartBtn">300</button>
 
-  <h1>SCANDAL</h1>
+  <div class="title">SCANDAL</div>
   <div class="subtitle">私の名前はスキャンダルです</div>
 
   <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/kd3pc2aLh2M" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/kd3pc2aLh2M" frameborder="0" allowfullscreen></iframe>
   </div>
 
-  <div class="image-block">
-    <img src="https://i.pinimg.com/736x/b8/ed/56/b8ed56d4f717a6941277c8a6c7b06440.jpg" alt="emo image">
+  <div class="image-section">
+    <img src="https://i.pinimg.com/736x/b8/ed/56/b8ed56d4f717a6941277c8a6c7b06440.jpg" class="bordered-img" />
+    <div class="inst-text">inst - @scandal3o3</div>
   </div>
-  <div class="caption">inst - @scandal3o3</div>
 
   <div class="lyrics">
 i used to think i love you, now i know it ain't true  
@@ -163,89 +176,54 @@ hella ice on my wrists, he thought my wrists sprained
 i'm in your driveway, baby, let's skrrt away
   </div>
 
-  <div class="image-block">
-    <img src="https://i.pinimg.com/736x/bb/e5/8a/bbe58a0e778739fe99a51b57fac26763.jpg" alt="doxed image">
-  </div>
-  <div class="caption">U'VE BEEN DOXED</div>
+  <img src="https://i.pinimg.com/736x/bb/e5/8a/bbe58a0e778739fe99a51b57fac26763.jpg" class="dox-image"/>
+  <div class="dox-text">U'VE BEEN DOXED</div>
 
   <script>
-    function toggleGrayscale() {
-      document.body.classList.toggle('grayscale');
-    }
+    const heartBtn = document.getElementById('heartBtn');
+    const daltonicBtn = document.getElementById('daltonicBtn');
+    let daltonic = false;
 
-    function dropHeart(event) {
+    // Daltonic mode toggle
+    daltonicBtn.addEventListener('click', () => {
+      daltonic = !daltonic;
+      document.body.style.filter = daltonic ? 'grayscale(1)' : 'none';
+    });
+
+    // Heart on click
+    document.addEventListener('click', (e) => {
+      if (e.target === heartBtn || e.target === daltonicBtn) return;
+
       const heart = document.createElement('div');
       heart.className = 'heart';
-      heart.innerHTML = '<3';
+      heart.style.left = `${e.clientX}px`;
+      heart.style.top = `${e.clientY}px`;
+      heart.innerText = '<3';
       document.body.appendChild(heart);
-      heart.style.left = `${event?.clientX || Math.random() * window.innerWidth}px`;
-      heart.style.top = `${event?.clientY || 100}px`;
-
       setTimeout(() => heart.remove(), 2000);
-    }
-
-    document.body.addEventListener('click', function (e) {
-      if (e.target.id !== 'heart-btn' && e.target.id !== 'daltonic') {
-        dropHeart(e);
-      }
     });
 
-    const canvas = document.getElementById('canvas');
-    const ctx = canvas.getContext('2d');
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    // Petals
+    const petalUrl = 'https://static.vecteezy.com/system/resources/previews/054/714/671/non_2x/single-red-rose-petal-delicate-romance-valentine-love-nature-beauty-flower-bloom-petal-free-png.png';
 
-    const petalImg = new Image();
-    petalImg.src = 'https://static.vecteezy.com/system/resources/previews/054/714/671/non_2x/single-red-rose-petal-delicate-romance-valentine-love-nature-beauty-flower-bloom-petal-free-png.png';
+    setInterval(() => {
+      const petal = document.createElement('img');
+      petal.src = petalUrl;
+      petal.className = 'petal';
+      petal.style.left = `${Math.random() * window.innerWidth}px`;
+      petal.style.opacity = '0.6';
+      document.body.appendChild(petal);
 
-    class Petal {
-      constructor() {
-        this.reset();
-      }
+      const fallTime = 3000 + Math.random() * 2000;
+      petal.style.transition = `transform ${fallTime}ms linear, opacity 2s ease-out`;
 
-      reset() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * -canvas.height;
-        this.size = 10 + Math.random() * 15;
-        this.speed = 1 + Math.random() * 1.5;
-        this.angle = Math.random() * 2 * Math.PI;
-        this.opacity = 0.3 + Math.random() * 0.2;
-      }
-
-      update() {
-        this.y += this.speed;
-        this.x += Math.sin(this.angle) * 0.3;
-        this.angle += 0.01;
-        this.opacity -= 0.002;
-        if (this.opacity <= 0) {
-          this.reset();
-        }
-      }
-
-      draw() {
-        ctx.globalAlpha = this.opacity;
-        ctx.drawImage(petalImg, this.x, this.y, this.size, this.size);
-        ctx.globalAlpha = 1;
-      }
-    }
-
-    const petals = Array.from({ length: 30 }, () => new Petal());
-
-    function animate() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      petals.forEach(p => {
-        p.update();
-        p.draw();
+      requestAnimationFrame(() => {
+        petal.style.transform = `translateY(${window.innerHeight}px) rotate(${Math.random() * 360}deg)`;
+        petal.style.opacity = '0';
       });
-      requestAnimationFrame(animate);
-    }
 
-    petalImg.onload = animate;
-
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
+      setTimeout(() => petal.remove(), fallTime + 2000);
+    }, 500);
   </script>
 </body>
 </html>
